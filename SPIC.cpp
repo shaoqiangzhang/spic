@@ -1,12 +1,14 @@
 //===================================================
 //Using two motif files to calculate motif-motif similarity
-//Designed by Shaoqiang Zhang (zhangshaoqiang@gmail.com)
+//Designed by Shaoqiang Zhang (zhangshaoqiang@tjnu.edu.cn)
 //SPIC.cpp
 //====================================================
 #include<iostream>
+#include<iomanip>
 #include<vector>
 #include<fstream>
 #include<sstream>
+#include <cstdlib>
 using namespace std;
 //-----------------------------------------------------
 typedef vector<vector<double> > Matrix;
@@ -33,7 +35,7 @@ int main(int argc, const char** argv){
         cout<<"t xx xx xx xx xx ... xx\n\n";
 	cout<<"If you want to use the metric, please cite the paper:\n";
 	cout<<"S. Zhang et al. A Novel Information Contents Based Similarity Metric for Comparing TFBS Motifs, Proceedings of ISB2012: 32-36.\n\n";
-	cout<<"Designed by Shaoqiang Zhang (zhangshaoqiang@gmail.com), July 2012\n\n";
+	cout<<"Designed by Shaoqiang Zhang (zhangshaoqiang@tjnu.edu.cn), July 2012\n\n";
         exit(1);
     }
     ifstream motifAfile(argv[1]);
@@ -95,8 +97,8 @@ int main(int argc, const char** argv){
     double simValue;
     (simScore3>1)?simValue=1 :simValue=simScore3;
     if(simValue>=cutoff){
-    cout.precision(2);
-        cout<<Amotiflabel<<" "<<Bmotiflabel<<" "<<simValue<<endl;
+        cout<<Amotiflabel<<" "<<Bmotiflabel<<" ";
+	cout<<setiosflags(ios::fixed)<<setprecision(2)<<simValue<<endl;
     }
 }
 //---------------------------------------------------------------------------------------------------
